@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" href="css/font-style.css">
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <div class="toDoTitleBlock">
+            <h1 class="toDoTitle">todos</h1>
+        </div>
+    </header>
+
+    <section class="main">
+        <div class="todosBlock">
+            @RenderBody()
+        </div>
+        <div class="todosBlockBottom">
+            <div class="secondPage"></div>
+            <div class="thirdPage"></div>
+        </div>
+    </section>
+
+    <footer>
+    </footer>
+</body>
+</html>

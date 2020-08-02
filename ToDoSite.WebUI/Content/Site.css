@@ -1,0 +1,150 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #fffdfd;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.toDoTitleBlock {
+    display: flex;
+    justify-content: center;
+}
+
+.toDoTitle {
+    color: #ffd1c5;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 8em;
+    margin: 1vw 0 0 0;
+}
+
+.todosBlock {
+    width: 70vw;
+    border: 1px solid #e2e2e2;
+    background-color: #ffffff;
+    box-shadow: 0 25px 30px rgba(0,0,0,0.15);
+}
+
+.todosBlockHeader {
+    border-bottom: 2px solid #d3d3d3;
+}
+
+.todosBlockBody {
+    width: 100%;
+}
+
+.taskName {
+    padding: 15px 10px 15px 0;
+    width: 92%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+}
+
+.itemTask {
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.completeCheckBlock {
+    width: 8%;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.todosBlockFooter {
+    color: #777;
+    height: 40px;
+    text-align: center;
+    border-top: 1px solid #d1d1d1;
+    border-bottom: 1px solid #d1d1d1;
+}
+
+.todosBlockBottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.secondPage {
+    width: 69vw;
+}
+
+.thirdPage {
+    width: 98%;
+}
+
+.secondPage, .thirdPage {
+    border-bottom: 1px solid #d1d1d1;
+    border-left: 1px solid #d1d1d1;
+    border-right: 1px solid #d1d1d1;
+    background-color: #f1f1f1;
+    height: 5px;
+}
+
+label:before, .completeCheck {
+    width: 26px;
+    height: 26px;
+}
+
+.completeCheck {
+    position: absolute;
+    opacity: 0;
+}
+
+    .completeCheck + label {
+        display: inline-flex;
+        align-items: center;
+        user-select: none;
+    }
+
+        .completeCheck + label::before {
+            content: '';
+            display: inline-block;
+            flex-shrink: 0;
+            flex-grow: 0;
+            border: 1px solid #adb5bd;
+            border-radius: 26px;
+            margin-right: 0.5em;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 50% 50%;
+        }
+
+    .completeCheck:checked + label::before {
+        border-color: #7a8086;
+        text-align: center;
+        font-family: 'icomoon' !important;
+        font-size: 26px;
+        content: "\e900";
+        color: #00d636;
+    }
+
+    /* стили для чекбокса, находящегося в состоянии disabled */
+    .completeCheck:disabled + label::before {
+        background-color: #e9ecef;
+    }
+
+
+.overlay {
+    width: 70vw;
+    height: 49px;
+    background-color: red;
+    position: absolute;
+    opacity: 0;
+}
+
+    .overlay:hover {
+        opacity: 1;
+    }
