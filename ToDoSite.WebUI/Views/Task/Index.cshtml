@@ -1,27 +1,38 @@
 ﻿@model IEnumerable<ToDoSite.Domain.Entities.Task>
 
+
 @{
     ViewBag.Title = "Index";
 }
 
+
 <div class="todosBlockHeader">
-    <input type="checkbox" class="comboBox">
-    <form action="#" class="createNewTask"></form>
+    <div class="completeCheckBlock">
+        <input type="checkbox" id="checkboxAll">
+    </div>
+    @using (Ajax.BeginForm("CreateNewTask", "Task", new AjaxOptions { }, new { id = "createNewTaskForm", defaultButton = "enter"}))
+    {
+        <input type="text" name="toDoText" id="toDoInput" placeholder="What needs to be done?">
+    }
+
 </div>
 <div class="todosBlockBody">
     <ul>
-        @try {
+        @try
+        {
             foreach (var item in Model)
             {
                 <li class="itemTask">
                     <div class="completeCheckBlock">
-                        <input type="checkbox" class="completeCheck" value=@item.>
-                        <label for="checkbox"></label>
+                        @using (Html.BeginForm("Index", "Task", FormMethod.Post, new { @class = "taskCheckForm"}))
+                        {
+                            @Html.CheckBox(item.Id.ToString(), (item.IsComplete), new { @class = "completeCheck" })
+                            <label for="completeCheck" class="labelCompleteCheck"></label>
+                        }
                     </div>
                     <p class="taskName">@item.Name</p>
-                    <a href="" class="delete"></a>
+                    <a href="#" class="delete"></a>
                 </li>
-                <a href="#" class="delete"></a>
             }
         }
         catch (NullReferenceException) { }

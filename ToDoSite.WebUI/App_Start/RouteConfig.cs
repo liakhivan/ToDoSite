@@ -13,6 +13,12 @@ namespace ToDoSite.WebUI
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //routes.MapRoute(
+            //    name: "Default",
+            //    url: "{id}",
+            //    defaults: new { controller = "Task", action = "Index", id = "Completed" }
+            //);
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

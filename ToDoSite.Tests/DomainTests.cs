@@ -1,18 +1,18 @@
 ﻿using System;
-using System.Web.Routing;
+using ToDoSite.Domain.Abstruct;
+using ToDoSite.Domain.Repositories;
+using ToDoSite.Domain.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ToDoSite.WebUI;
-using System.Web;
-using System.Web.Handlers;
 
 namespace ToDoSite.Tests
 {
     [TestClass]
-    public class WebUITests
+    public class DomainTests
     {
         [TestMethod]
-        public void TestIndexRoute()
+        public void CreateNewTask()
         {
+
         }
     }
 }

@@ -17,6 +17,7 @@ namespace ToDoSite.Domain.Repositories
         {
             dbContext = new TaskContext();
         }
+
         public IEnumerable<Task> Tasks {
             get => dbContext.Tasks;
         }
@@ -24,14 +25,15 @@ namespace ToDoSite.Domain.Repositories
 
         public void Create(Task item)
         {
-            dbContext.Tasks.Add(item);
+            dbContext.Tasks.Add(item ?? throw new ArgumentNullException(paramName: item.ToString()));
         }
 
         public void Delete(int id)
         {
             Task task = dbContext.Tasks.Find(id);
-            if (task != null)
-                dbContext.Tasks.Remove(task); 
+            if (task == null)
+                throw new ArgumentNullException(paramName: task.ToString());
+            dbContext.Tasks.Remove(task); 
         }
 
         protected virtual void Dispose(bool disposing)

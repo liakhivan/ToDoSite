@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: #fffdfd;
+    background-color: #f5f5f5;
 }
 
 .main {
@@ -19,9 +19,9 @@ body {
 }
 
 .toDoTitle {
-    color: #ffd1c5;
+    color: rgba(175, 47, 47, 0.15);
     font-family: 'Roboto Condensed', sans-serif;
-    font-size: 8em;
+    font-size: 100px;
     margin: 1vw 0 0 0;
 }
 
@@ -34,6 +34,31 @@ body {
 
 .todosBlockHeader {
     border-bottom: 2px solid #d3d3d3;
+    display: flex;
+}
+
+#createNewTask {
+    width: 98%;
+}
+
+#createNewTaskForm {
+    width: 100%;
+}
+
+#toDoInput {
+    width: 100%;
+    height: 60px;
+    border: none;
+    font-size: 25px;
+}
+
+#toDoInput:placeholder {
+    color: #dddddd;
+    font-style: italic;
+}
+
+#toDoInput:focus {
+    outline: none;
 }
 
 .todosBlockBody {
@@ -52,6 +77,7 @@ body {
     list-style: none;
     display: flex;
     align-items: center;
+    position: relative;
     border-bottom: 1px solid #d3d3d3;
 }
 
@@ -103,38 +129,38 @@ label:before, .completeCheck {
     opacity: 0;
 }
 
-    .completeCheck + label {
-        display: inline-flex;
-        align-items: center;
-        user-select: none;
-    }
+.completeCheck + label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+}
 
-        .completeCheck + label::before {
-            content: '';
-            display: inline-block;
-            flex-shrink: 0;
-            flex-grow: 0;
-            border: 1px solid #adb5bd;
-            border-radius: 26px;
-            margin-right: 0.5em;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: 50% 50%;
-        }
+.completeCheck + label::before {
+    content: '';
+    display: inline-block;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #adb5bd;
+    border-radius: 26px;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+}
 
-    .completeCheck:checked + label::before {
-        border-color: #7a8086;
-        text-align: center;
-        font-family: 'icomoon' !important;
-        font-size: 26px;
-        content: "\e900";
-        color: #00d636;
-    }
+.completeCheck:checked + label::before {
+    border-color: #7a8086;
+    text-align: center;
+    font-family: 'icomoon' !important;
+    font-size: 26px;
+    content: "\e900";
+    color: #00d636;
+}
 
-    /* стили для чекбокса, находящегося в состоянии disabled */
-    .completeCheck:disabled + label::before {
-        background-color: #e9ecef;
-    }
+/* стили для чекбокса, находящегося в состоянии disabled */
+.completeCheck:disabled + label::before {
+    background-color: #e9ecef;
+}
 
 
 .overlay {
@@ -145,6 +171,10 @@ label:before, .completeCheck {
     opacity: 0;
 }
 
-    .overlay:hover {
-        opacity: 1;
-    }
+.overlay:hover {
+    opacity: 1;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 0;
+}

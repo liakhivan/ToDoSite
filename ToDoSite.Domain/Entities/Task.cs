@@ -6,24 +6,27 @@ using System.Text;
 
 namespace ToDoSite.Domain.Entities
 {
+    public enum TaskFilter
+    {
+        All,
+        Active,
+        Completed
+    }
+
     public class Task
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public bool IsActive { get; set; }
-        public int Priority { get; set; }
+        public bool IsComplete { get; set; }
 
         public Task()
         {}
 
-        public Task(string name, int priority)
+        public Task(string name)
         {
             Name = name ?? throw new ArgumentNullException(Name);
 
-            if (priority <= 0)
-                throw new ArgumentException();
-            IsActive = true;
-            Priority = priority;
+            IsComplete = false;
         }
     }
 }
