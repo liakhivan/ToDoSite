@@ -10,32 +10,13 @@
     <div class="completeCheckBlock">
         <input type="checkbox" id="checkboxAll">
     </div>
-    @using (Ajax.BeginForm("CreateNewTask", "Task", new AjaxOptions { }, new { id = "createNewTaskForm", defaultButton = "enter"}))
+    @using (Ajax.BeginForm("CreateNewTask", "Task", new AjaxOptions { }, new { id = "createNewTaskForm", defaultButton = "enter" }))
     {
         <input type="text" name="toDoText" id="toDoInput" placeholder="What needs to be done?">
     }
 
 </div>
 <div class="todosBlockBody">
-    <ul>
-        @try
-        {
-            foreach (var item in Model)
-            {
-                <li class="itemTask">
-                    <div class="completeCheckBlock">
-                        @using (Html.BeginForm("Index", "Task", FormMethod.Post, new { @class = "taskCheckForm"}))
-                        {
-                            @Html.CheckBox(item.Id.ToString(), (item.IsComplete), new { @class = "completeCheck" })
-                            <label for="completeCheck" class="labelCompleteCheck"></label>
-                        }
-                    </div>
-                    <p class="taskName">@item.Name</p>
-                    <a href="#" class="delete"></a>
-                </li>
-            }
-        }
-        catch (NullReferenceException) { }
-    </ul>
+    @{Html.RenderPartial("PartialTaskList", Model);}
 </div>
 

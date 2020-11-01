@@ -19,37 +19,49 @@ namespace ToDoSite.WebUI.Controllers
         {
             this.taskRepository = taskRepository;
         }
-        // GET: Task
-        //public ActionResult Index()
-        //{
-        //    return View(taskRepository.Tasks);
-        //}
+
 
         [HttpGet]
-        public ActionResult Index(TaskFilter filter = TaskFilter.All)
-        {
-            this.filter = filter;
-            switch (this.filter)
-            {
-                case TaskFilter.All:
-                    return View(taskRepository.Tasks);
-                case TaskFilter.Active:
-                    return View(taskRepository.Tasks.Where(n => !n.IsComplete));
-                case TaskFilter.Completed:
-                    return View(taskRepository.Tasks.Where(n => n.IsComplete));
-            }
-            return View(taskRepository.Tasks);
+        public ActionResult Index()
+        { 
+            return View(Filter(filter));
         }
 
 
 
-        public void CreateNewTask(string toDoText)
+        public RedirectResult CreateNewTask(string toDoText)
         {
             Task newTask = new Task(toDoText);
             taskRepository.Create(newTask);
             taskRepository.SaveChanges();
 
-            Index(filter);
+            return new RedirectResult("/Task/Index");
+        }
+
+
+        [HttpPost]
+        public RedirectResult DeleteTask(int id)
+        {
+            taskRepository.Delete(id);
+            taskRepository.SaveChanges();
+
+            return new RedirectResult("/Task/Index");
+        }
+
+
+        private IEnumerable<Task> Filter(TaskFilter taskFilter)
+        {
+            switch (this.filter)
+            {
+                case TaskFilter.All:
+                    return taskRepository.Tasks;
+                case TaskFilter.Active:
+                    return taskRepository.Tasks.Where(n => !n.IsComplete);
+                case TaskFilter.Completed:
+                    return taskRepository.Tasks.Where(n => n.IsComplete);
+            }
+
+            throw new ArgumentException();
         }
     }
 }

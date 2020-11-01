@@ -1,0 +1,28 @@
+﻿@model IEnumerable<ToDoSite.Domain.Entities.Task>
+
+
+<ul>
+    @try
+    {
+        foreach (var item in Model)
+        {
+            <li class="itemTask">
+                <div class="completeCheckBlock">
+                    @using (Html.BeginForm("#", "Task", FormMethod.Post, new { @class = "taskCheckForm" }))
+                     {
+                        @Html.CheckBox(item.Id.ToString(), (item.IsComplete), new { @class = "completeCheck" })
+                        <label for="completeCheck" class="labelCompleteCheck"></label>
+                     }
+                </div>
+                <p class="taskName">@item.Name</p>
+
+                @using (Html.BeginForm("DeleteTask", "Task", FormMethod.Post, new { @class = "deleteTaskForm" }))
+                 {
+                    <input type="hidden" name="id" value=@item.Id />
+                    <input type="submit" name="deleteTask" class="deleteTaskButton" />
+                 }
+            </li>
+        }
+    }
+    catch (NullReferenceException) { }
+</ul>
