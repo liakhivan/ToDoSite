@@ -7,15 +7,10 @@
         foreach (var item in Model)
         {
             <li class="itemTask">
-
-
-
-                @using (Ajax.BeginForm("ChangeStatus", "Task", new AjaxOptions(), new { @class = "completeCheckBlock", defaultButton = "input" }))
-                {
-                        <input type="hidden" name="id" value=@item.Id />
-                        <input type="checkbox" class="completeCheck" value=@item.IsComplete>
-                        <label for="checkbox" class="completeCheckLabel"></label>
-                }
+                <div class="completeCheckBlock">
+                    <input type="checkbox" id=@item.Id class="completeCheck" checked=@item.IsComplete>
+                    <label for="checkbox" class="completeCheckLabel"></label>
+                </div>
                 <p class="taskName">@item.Name</p>
 
                 @using (Html.BeginForm("DeleteTask", "Task", FormMethod.Post, new { @class = "deleteTaskForm" }))
