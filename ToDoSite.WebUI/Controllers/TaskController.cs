@@ -27,8 +27,7 @@ namespace ToDoSite.WebUI.Controllers
             return View(Filter(filter));
         }
 
-
-
+        [HttpPost]
         public RedirectResult CreateNewTask(string toDoText)
         {
             Task newTask = new Task(toDoText);
@@ -38,7 +37,6 @@ namespace ToDoSite.WebUI.Controllers
             return new RedirectResult("/Task/Index");
         }
 
-
         [HttpPost]
         public RedirectResult DeleteTask(int id)
         {
@@ -47,6 +45,18 @@ namespace ToDoSite.WebUI.Controllers
 
             return new RedirectResult("/Task/Index");
         }
+
+        public RedirectResult ChangeStatus(int id)
+        {
+            Task task = taskRepository.GetItem(id);
+            task.IsComplete = !task.IsComplete;
+            taskRepository.Update(task);
+
+            taskRepository.SaveChanges();
+
+            return new RedirectResult("/Task/Index");
+        }
+
 
 
         private IEnumerable<Task> Filter(TaskFilter taskFilter)

@@ -52,10 +52,6 @@ body {
     font-size: 25px;
 }
 
-#toDoInput:placeholder {
-    color: #dddddd;
-    font-style: italic;
-}
 
 #toDoInput:focus {
     outline: none;
@@ -97,7 +93,8 @@ body {
 }
 
 .completeCheckBlock {
-    width: 8%;
+    width: 45px;
+    height: 26px;
     display: flex;
     justify-content: center;
 }
@@ -134,9 +131,10 @@ body {
     height: 5px;
 }
 
-label:before, .completeCheck {
+label.completeCheckLabel::before, .completeCheck {
     width: 26px;
     height: 26px;
+    margin-left: 5px;
 }
 
 .completeCheck {
@@ -144,13 +142,16 @@ label:before, .completeCheck {
     opacity: 0;
 }
 
-.completeCheck + label {
+.completeCheckLabel {
+    width: 41px;
+}
+
+.completeCheck+label {
     display: inline-flex;
     align-items: center;
     user-select: none;
 }
-
-.completeCheck + label::before {
+.completeCheck+label::before {
     content: '';
     display: inline-block;
     flex-shrink: 0;
@@ -163,7 +164,7 @@ label:before, .completeCheck {
     background-size: 50% 50%;
 }
 
-.completeCheck:checked + label::before {
+.completeCheck:checked+label::before {
     border-color: #7a8086;
     text-align: center;
     font-family: 'icomoon' !important;
@@ -172,8 +173,9 @@ label:before, .completeCheck {
     color: #00d636;
 }
 
-/* стили для чекбокса, находящегося в состоянии disabled */
-.completeCheck:disabled + label::before {
+
+  /* стили для чекбокса, находящегося в состоянии disabled */
+.completeCheck:disabled+label::before {
     background-color: #e9ecef;
 }
 
