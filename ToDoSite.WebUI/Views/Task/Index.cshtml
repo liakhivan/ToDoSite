@@ -6,17 +6,35 @@
 }
 
 
-<div class="todosBlockHeader">
-    <div class="completeCheckBlockq">
-        <input type="checkbox" id="checkboxAll">
-    </div>
-    @using (Ajax.BeginForm("CreateNewTask", "Task", new AjaxOptions { }, new { id = "createNewTaskForm", defaultButton = "enter" }))
-    {
-        <input type="text" name="toDoText" id="toDoInput" placeholder="What needs to be done?">
-    }
+<div class="todosBlock">
+    <div class="todosBlockHeader">
+        <div class="completeCheckBlockq">
+            <input type="checkbox" id="checkboxAll">
+        </div>
+        @using (Ajax.BeginForm("CreateNewTask", "Task", new AjaxOptions { }, new { id = "createNewTaskForm", defaultButton = "enter" }))
+        {
+            <input type="text" name="toDoText" id="toDoInput" placeholder="What needs to be done?">
+        }
 
+    </div>
+    <div class="todosBlockBody">
+        @{Html.RenderPartial("PartialTaskList", Model);}
+    </div>
+    <div class="navBlock">
+        <div class="countOfTasksContainer">
+            <span id="countOfTasks">@Model.Count()</span>
+            <p> items left.</p>
+        </div>
+        <div class="filters">
+
+        </div>
+        <a href="#" class="clearCompleted"></a>
+    </div>
 </div>
-<div class="todosBlockBody">
-    @{Html.RenderPartial("PartialTaskList", Model);}
+
+<div class="todosBlockBottom">
+
+    <span class="secondPage"></span>
+    <span class="thirdPage"></span>
 </div>
 
