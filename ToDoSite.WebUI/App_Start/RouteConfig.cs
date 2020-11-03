@@ -21,8 +21,8 @@ namespace ToDoSite.WebUI
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Task", action = "Index", id = UrlParameter.Optional }
+                url: "{controller}/{action}/{type}",
+                defaults: new { controller = "Task", action = "Index", type = "All"  }
             );
         }
     }

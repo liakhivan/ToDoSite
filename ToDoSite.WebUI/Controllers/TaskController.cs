@@ -13,7 +13,6 @@ namespace ToDoSite.WebUI.Controllers
     {
         private readonly ITaskRepository taskRepository;
 
-        TaskFilter filter = TaskFilter.All;
 
         public TaskController(ITaskRepository taskRepository)
         {
@@ -22,9 +21,9 @@ namespace ToDoSite.WebUI.Controllers
 
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(string type)
         { 
-            return View(Filter(filter));
+            return View(Filter(type));
         }
 
         [HttpPost]
@@ -59,15 +58,15 @@ namespace ToDoSite.WebUI.Controllers
 
 
 
-        private IEnumerable<Task> Filter(TaskFilter taskFilter)
+        private IEnumerable<Task> Filter(string taskFilter)
         {
-            switch (this.filter)
+            switch (taskFilter)
             {
-                case TaskFilter.All:
+                case "All":
                     return taskRepository.Tasks;
-                case TaskFilter.Active:
+                case "Active":
                     return taskRepository.Tasks.Where(n => !n.IsComplete);
-                case TaskFilter.Completed:
+                case "Completed":
                     return taskRepository.Tasks.Where(n => n.IsComplete);
             }
 

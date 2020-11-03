@@ -6,12 +6,6 @@ using System.Text;
 
 namespace ToDoSite.Domain.Entities
 {
-    public enum TaskFilter
-    {
-        All,
-        Active,
-        Completed
-    }
 
     public class Task
     {

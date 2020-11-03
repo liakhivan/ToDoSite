@@ -25,9 +25,17 @@
             <span id="countOfTasks">@Model.Count()</span>
             <p> items left.</p>
         </div>
-        <div class="filters">
-
-        </div>
+        <ul id="filters">
+            <li>
+                @Html.ActionLink("All", "Index", "Task", new { type = "All" }, new { @class = "filter"})
+            </li>
+            <li>
+                @Html.ActionLink("Active", "Index", "Task", new { type = "Active" }, new { @class = "filter" })
+            </li>
+            <li>
+                @Html.ActionLink("Completed", "Index", "Task", new { type = "Completed" }, new { @class = "filter" })
+            </li>
+        </ul>
         <a href="#" class="clearCompleted"></a>
     </div>
 </div>
