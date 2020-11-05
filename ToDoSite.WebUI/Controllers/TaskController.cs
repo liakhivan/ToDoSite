@@ -56,7 +56,20 @@ namespace ToDoSite.WebUI.Controllers
             return new RedirectResult("/Task/Index");
         }
 
+        public RedirectResult ChangeAllStatuses(bool status)
+        {
+            IEnumerable<Task> tasks = taskRepository.Tasks;
 
+            foreach (Task task in tasks)
+            {
+                task.IsComplete = status;
+                taskRepository.Update(task);
+            }
+
+            taskRepository.SaveChanges();
+
+            return new RedirectResult("/Task/Index");
+        }
 
         private IEnumerable<Task> Filter(string taskFilter)
         {

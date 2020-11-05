@@ -1,23 +1,24 @@
 ﻿'use strict';
 
 
-function addEventsOnFilters() {
-    let filters = document.getElementById("filters");
+function addEventsOnFilters(statusMas) {
+    const filters = document.getElementById('filters');
 
-    for (let i = 1; i < filters.childElementCount; i += 2) {
-        let childElement = filters.childNodes[i].lastChild;
-        childElement.addEventListener("click", (e) => {
-            let filters = document.getElementById("filters");
+    for (let i = 0; i < 3; i++) {
+        const itemFilter = document.createElement('li');
 
-            for (let i = 0; i < filters.childElementCount; i++) {
-                filters.childNodes[i].firstChild().className = "";
-            }
-
-            e.target.className = "checked";
+        const itemFilterLink = document.createElement('a');
+        itemFilterLink.href = '/Task/Index/' + statusMas[i];
+        itemFilterLink.textContent = (statusMas[i]);
+        itemFilterLink.addEventListener('click', (e) => {
+            e.target.className = 'checked';
         });
+
+        itemFilter.appendChild(itemFilterLink);
+        filters.appendChild(itemFilter);
     }
 }
 
 
-
-addEventsOnFilters();
+const statusTaskMass = [ 'All', 'Active', 'Completed'];
+addEventsOnFilters(statusTaskMass);
