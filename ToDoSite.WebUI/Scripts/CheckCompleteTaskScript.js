@@ -4,6 +4,4 @@
             type: "POST", url: "Task/ChangeStatus", data: { id: e.target.id }
         });
     });
-
-
 });
