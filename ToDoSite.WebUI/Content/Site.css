@@ -253,3 +253,11 @@ ul#filters > li > a {
 a.checked {
     border: 1px solid black;
 }
+
+.deleteCompletedTask {
+    text-decoration: none;
+    color: black;
+    font-family: Arial;
+    position: absolute;
+    left: calc(100% - 135px);
+}

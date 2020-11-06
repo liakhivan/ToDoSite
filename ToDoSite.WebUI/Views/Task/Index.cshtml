@@ -31,7 +31,7 @@
         <ul id="filters">
 
         </ul>
-        <a href="#" class="clearCompleted"></a>
+        @Html.ActionLink("Delete completed", "DeleteCompletedTask", "Task", null, new { @class = "deleteCompletedTask" })
     </div>
 </div>
 
