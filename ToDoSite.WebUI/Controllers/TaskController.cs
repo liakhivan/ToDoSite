@@ -44,6 +44,7 @@ namespace ToDoSite.WebUI.Controllers
 
             return new RedirectResult("/Task/Index");
         }
+
         public RedirectResult DeleteCompletedTask()
         {
             IEnumerable<Task> tasks = taskRepository.Tasks;
@@ -84,6 +85,18 @@ namespace ToDoSite.WebUI.Controllers
 
             return new RedirectResult("/Task/Index");
         }
+
+        public RedirectResult ChangeTaskName(int id, string name)
+        {
+            Task task = taskRepository.GetItem(id);
+            task.Name = name;
+            taskRepository.Update(task);
+
+            taskRepository.SaveChanges();
+
+            return new RedirectResult("/Task/Index");
+        }
+
 
         private IEnumerable<Task> Filter(string taskFilter)
         {

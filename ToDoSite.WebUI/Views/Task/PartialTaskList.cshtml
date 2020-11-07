@@ -6,9 +6,9 @@
     {
         foreach (var item in Model)
         {
-            <li class="itemTask">
+            <li class="itemTask" id=@item.Id>
                 <div class="completeCheckBlock">
-                    <input type="checkbox" id=@item.Id class="completeCheck" checked=@item.IsComplete>
+                    <input type="checkbox" class="completeCheck" checked=@item.IsComplete>
                     <label for="checkbox" class="completeCheckLabel"></label>
                 </div>
                 <p class="taskName">@item.Name</p>
@@ -18,6 +18,8 @@
                     <input type="hidden" name="id" value=@item.Id />
                     <input type="submit" name="deleteTask" class="deleteTaskButton" value="X" />
                 }
+
+                <input type="text" value=@item.Name class="editTaskName" />
             </li>
         }
     }

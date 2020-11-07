@@ -136,7 +136,22 @@ body {
     justify-content: center;
 }
 
+.editTaskName {
+    display: none;
+    width: calc(100% - 64px);
+    height: 100%;
+    position: absolute;
+    margin-left: 55px;
+    padding-left: 5px;
+    font-family: Arial;
+    font-size: 24px;
+    outline: antiquewhite;
+    box-shadow: inset 0px 0px 6px rgb(0, 0, 0, 0.6);
+}
 
+.edited {
+    display: block;
+}
 
 .todosBlockFooter {
     color: #777;
