@@ -252,8 +252,8 @@ p.checked {
 ul#filters {
     display: flex;
     position: absolute;
-    width: 160px;
-    left: calc(50% - 80px);
+    width: 190px;
+    left: calc(50% - 95px);
 }
 
 ul#filters > li {
@@ -268,10 +268,12 @@ ul#filters > li > a {
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
     color: black;
+    padding: 2px 5px;
 }
 
 a.checked {
     border: 1px solid black;
+    border-radius: 2px;
 }
 
 .deleteCompletedTask {
