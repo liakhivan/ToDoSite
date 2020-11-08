@@ -10,10 +10,27 @@
             }
         }
 
-        //TODO: Write code for change all status tasks on front. But REMEMBER ABOUT onchange for change status one task.
-
         $.ajax({
-            type: "POST", url: "Task/ChangeAllStatuses", data: { status: ((countActive !== 0) ? true : false) }
+            type: "POST",
+            url: "Task/ChangeAllStatuses",
+            data: {
+                status: ((countActive !== 0) ? true : false)
+            },
+            success: function () {
+                let newStatus = ((countActive !== 0) ? true : false);
+
+                for (let i = 0; i < statusColl.length; i++) {
+                    if (statusColl[i].checked === newStatus)
+                        continue;
+
+                    statusColl[i].checked = newStatus;
+                    if (statusColl[i].checked) {
+                        statusColl[i].parentNode.parentNode.querySelector('.taskName').className += ' checked';
+                    } else {
+                        statusColl[i].parentNode.parentNode.querySelector('.taskName').className = statusColl[i].parentNode.parentNode.querySelector('.taskName').className.split(' ')[0];
+                    }
+                }
+            }
         });
     });
 });

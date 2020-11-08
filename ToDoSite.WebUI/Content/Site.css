@@ -225,6 +225,11 @@ label.completeCheckLabel::before, .completeCheck {
     color: #00d636;
 }
 
+p.checked {
+    color: lightgrey;
+    text-decoration: line-through;
+}
+
 .completeCheck:disabled+label::before {
     background-color: #e9ecef;
 }
